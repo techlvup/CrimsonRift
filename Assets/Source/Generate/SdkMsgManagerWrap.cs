@@ -61,7 +61,7 @@ public class SdkMsgManagerWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			SdkMsgManager obj = (SdkMsgManager)ToLua.CheckObject<SdkMsgManager>(L, 1);
-			obj.LoginQQ();
+			obj.Login();
 			return 0;
 		}
 		catch (Exception e)

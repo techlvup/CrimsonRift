@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Runtime.InteropServices;
 
 
 
@@ -21,20 +20,20 @@ public class SdkMsgManager : Singleton<SdkMsgManager>
 
         if (m_gameHelperJavaClass == null && DataUtilityManager.m_platform != "Windows")
         {
-            m_gameHelperJavaClass = new AndroidJavaClass("com.goddragon.spectraabyss.GameHelper");
+            m_gameHelperJavaClass = new AndroidJavaClass("com.vaststarryriver.crimsonrift.GameHelper");
         }
     }
 
     /// <summary>
     /// QQ登录
     /// </summary>
-    public void LoginQQ()
+    public void Login()
     {
         if (m_gameHelperJavaClass == null)
         {
             return;
         }
 
-        m_gameHelperJavaClass.CallStatic("LoginQQ");
+        m_gameHelperJavaClass.CallStatic("Login");
     }
 }
