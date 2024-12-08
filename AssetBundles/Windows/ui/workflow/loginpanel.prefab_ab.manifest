@@ -3,7 +3,7 @@ CRC: 487552308
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e86a52ba9521b96053ebf1f73f6272cc
+    Hash: 96d89749d88d761b9765f0c494297e73
   TypeTreeHash:
     serializedVersion: 2
     Hash: cedb6cc3e43ab951a505f9ad8e48c811
@@ -44,4 +44,4 @@ ClassTypes:
 Assets:
 - Assets/UpdateAssets/UI/Workflow/LoginPanel.prefab
 Dependencies:
-- E:/GitHubProjects/SpectraAbyss/SpectraAbyss/AssetBundles/Windows/animtion/play.anim_ab
+- E:/MyProjects/CrimsonRift/AssetBundles/Windows/animtion/play.anim_ab

@@ -20,7 +20,7 @@ public class SdkMsgManager : Singleton<SdkMsgManager>
 
         if (m_gameHelperJavaClass == null && DataUtilityManager.m_platform != "Windows")
         {
-            m_gameHelperJavaClass = new AndroidJavaClass("com.vaststarryriver.crimsonrift.GameHelper");
+            //m_gameHelperJavaClass = new AndroidJavaClass("com.vaststarryriver.crimsonrift.GameHelper");
         }
     }
 

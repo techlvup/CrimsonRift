@@ -10,11 +10,11 @@ public class CustomBuildScript
 {
     private static List<string> m_excludedFolders = new List<string> { "Assets/GameAssets" };// 设置需要排除的文件夹
     private static HashSet<string> m_excludedAssets = new HashSet<string>();// 收集所有需要排除的资源路径
-    private static string keystorePath = DataUtilityManager.m_localRootPath + "user.keystore"; // Keystore 文件路径
+    private static string keystorePath = DataUtilityManager.m_localRootPath + "CrimsonRift.keystore"; // Keystore 文件路径
     private static string keystorePassword = "149630764"; // Keystore 密码
-    private static string keyAlias = "goddragon"; // Alias 名称
+    private static string keyAlias = "crimsonrift"; // Alias 名称
     private static string keyAliasPassword = "149630764"; // Alias 密码
-    private static string m_locationPathName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop).Replace("\\","/") + "/MyGame.apk";//打包的输出路径
+    private static string m_locationPathName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop).Replace("\\","/") + "/CrimsonRift.apk";//打包的输出路径
 
 
 

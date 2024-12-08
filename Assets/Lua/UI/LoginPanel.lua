@@ -13,7 +13,7 @@ function LoginPanel.Awake(instance)
     LuaCallCS.PlayAnimation(gameObject, nil, "Play", WrapMode.Once, function ()
         LuaCallCS.SetText(gameObject, "Btn_Login/Text", "登录")
         LuaCallCS.AddClickListener(gameObject, "Btn_Login", function()
-            SdkMsgManager.Instance:LoginQQ()
+            print("登录");
         end)
     end)
 end

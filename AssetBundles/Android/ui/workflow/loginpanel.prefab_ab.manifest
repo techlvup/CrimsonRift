@@ -3,7 +3,7 @@ CRC: 3936094160
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 063a0444fa992c007cd16c4dc369be54
+    Hash: ef5fa07686a9d8678d87bafb5889a5a5
   TypeTreeHash:
     serializedVersion: 2
     Hash: cedb6cc3e43ab951a505f9ad8e48c811
@@ -44,4 +44,4 @@ ClassTypes:
 Assets:
 - Assets/UpdateAssets/UI/Workflow/LoginPanel.prefab
 Dependencies:
-- E:/GitHubProjects/SpectraAbyss/SpectraAbyss/AssetBundles/Android/animtion/play.anim_ab
+- E:/MyProjects/CrimsonRift/AssetBundles/Android/animtion/play.anim_ab

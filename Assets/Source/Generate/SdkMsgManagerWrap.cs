@@ -8,7 +8,7 @@ public class SdkMsgManagerWrap
 	{
 		L.BeginClass(typeof(SdkMsgManager), typeof(Singleton<SdkMsgManager>));
 		L.RegFunction("Init", Init);
-		L.RegFunction("LoginQQ", LoginQQ);
+		L.RegFunction("Login", Login);
 		L.RegFunction("New", _CreateSdkMsgManager);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -55,7 +55,7 @@ public class SdkMsgManagerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int LoginQQ(IntPtr L)
+	static int Login(IntPtr L)
 	{
 		try
 		{
