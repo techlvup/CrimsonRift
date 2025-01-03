@@ -1,9 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using LuaInterface;
-using System.Collections;
 
 public static partial class LuaCallCS
 {

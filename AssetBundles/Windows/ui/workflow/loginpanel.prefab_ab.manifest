@@ -1,12 +1,15 @@
 ManifestFileVersion: 0
-CRC: 487552308
+CRC: 1756055630
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 96d89749d88d761b9765f0c494297e73
+    Hash: 0a01079985a06837aa6409f8fbd90bdc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: cedb6cc3e43ab951a505f9ad8e48c811
+    Hash: 0034942f61fcf9e24a361e52290ae3a7
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 0a01079985a06837aa6409f8fbd90bdc
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -22,15 +25,15 @@ ClassTypes:
 - Class: 111
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
-  Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-- Class: 114
-  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 542150549aa0c654e971bdf4e850c68f, type: 3}
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2369704b91392474587ea0e949504195, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 542150549aa0c654e971bdf4e850c68f, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -41,6 +44,25 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Slider/SliderEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/UpdateAssets/UI/Workflow/LoginPanel.prefab
 Dependencies:

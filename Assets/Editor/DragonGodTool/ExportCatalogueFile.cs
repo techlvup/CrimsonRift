@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using LitJson;
+using Newtonsoft.Json;
 
 
 
@@ -16,7 +16,7 @@ public static class ExportCatalogueFile
     private static string m_aesKeyAndIvDataPath = m_rootPath + "ConfigData/ConfigDecryptData";
     private static string m_catalogueFilePath_Windows = m_rootPath + "CatalogueFiles/Windows";
     private static string m_catalogueFilePath_Android = m_rootPath + "CatalogueFiles/Android";
-    private static string m_luaPath = m_rootPath + "Assets/Lua";
+    private static string m_luaPath = m_rootPath + "Lua";
 
     private static Dictionary<string,string> m_filesContent = null;
 
@@ -63,7 +63,7 @@ public static class ExportCatalogueFile
 
                 if (m_filesContent != null && m_filesContent.Count > 0)
                 {
-                    sw.Write(JsonMapper.ToJson(m_filesContent));
+                    sw.Write(JsonConvert.SerializeObject(m_filesContent));
                     m_filesContent.Clear();
                 }
 

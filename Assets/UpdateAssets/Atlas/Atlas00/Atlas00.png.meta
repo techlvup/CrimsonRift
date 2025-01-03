@@ -1,34 +1,9 @@
 fileFormatVersion: 2
 guid: 72fe884e8c6e7d04ba09667f8aa6a88b
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: 00_bb_alpha
-    21300002: 00_oth_BeiBao002
-    21300004: 00_oth_BiaoTiZS030
-    21300006: 00_oth_ChengYuan
-    21300008: 00_oth_D3Arrowright
-    21300010: 00_oth_D3dian
-    21300012: 00_oth_D3dian2
-    21300014: 00_oth_D3QiPao2
-    21300016: 00_oth_D3tuodong
-    21300018: 00_oth_DH6_AnXing
-    21300020: 00_oth_DH6_BiaoTiDian
-    21300022: 00_oth_DH6_BiaoTiFenGeXian
-    21300024: 00_oth_DH6_CeBianFenGeXian
-    21300026: 00_oth_DH6_FenYeFenGeXian
-    21300028: 00_oth_DH6_HuoBiJia
-    21300030: 00_oth_DH6_JianTou2
-    21300032: 00_oth_DH6_JinDuTiao01
-    21300034: 00_oth_DH6_JinDuTiao02
-    21300036: 00_oth_DH6_JinDuTiao03
-    21300038: 00_oth_DH6_SaoDangZhuangTai1
-    21300040: 00_oth_DH6_SaoDangZhuangTai2
-    21300042: 00_oth_DH6_TanChuangFenGeXian
-    21300044: 00_oth_DH6_TanChuangJianTou
-    21300046: 00_oth_DH6_TanHao
-    21300048: 00_oth_DH6_WenHao
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -45,9 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -56,9 +34,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -79,11 +57,17 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -93,258 +77,59 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 00_bb_alpha
-      rect:
-        serializedVersion: 2
-        x: 236
-        y: 0
-        width: 1
-        height: 1
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a984e16c291927346a7fcffa25ca26a6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_BeiBao002
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 104
-        height: 104
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e1debd1d24a887047a8b04241fa0da2c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_BiaoTiZS030
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 227
-        width: 59
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b2fdaeb1b879a70498e31dc439da8779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_ChengYuan
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 209
-        width: 30
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 72ce1789788efb844926878d2a969bc6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_D3Arrowright
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 3
-        width: 47
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ab557258d99aee43a4638d50097a63f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_D3dian
-      rect:
-        serializedVersion: 2
-        x: 223
-        y: 31
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6fa772e5cc8e1384aae897292954b79f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_D3dian2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 241
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1db11b567db9d2e4a878662a9e9f854e
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_D3QiPao2
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 61
-        width: 23
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 90b9ebae89afab54a943a4451c3f35f0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_D3tuodong
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 3
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 455e32df93daec64f8d46c6affda440c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_AnXing
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 109
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e668b520767aa94b8e6650b525adb40
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_BiaoTiDian
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 61
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bafc872cd6071bc4e9528c4124c74ca6
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_BiaoTiFenGeXian
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 109
-        width: 4
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14aa0388f7f5467419819fa5a17e7f4a
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_CeBianFenGeXian
+      name: 00_icon
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 234
-        height: 1
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,59 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e22b29e92508e0b469da6492046ef653
+      spriteID: c0869d535e6208750800000000000000
+      internalID: 6305082244211501068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 00_oth_DH6_FenYeFenGeXian
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 113
-        width: 4
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef990bc65ca930c47a31be9496f45e28
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_HuoBiJia
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 109
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ada47a741c35e1d419e9050768491ddd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_JianTou2
+      name: 00_login
       rect:
         serializedVersion: 2
         x: 0
-        y: 175
-        width: 63
-        height: 50
+        y: 514
+        width: 810
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,187 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 119a5625a14d29748a7a6cde8dd01676
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_JinDuTiao01
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 143
-        width: 31
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4b28c98b4611b4b4c81b844a8ea02f24
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_JinDuTiao02
-      rect:
-        serializedVersion: 2
-        x: 201
-        y: 3
-        width: 27
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7a2e1965b5210a449886e3b314c7e412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_JinDuTiao03
-      rect:
-        serializedVersion: 2
-        x: 166
-        y: 31
-        width: 27
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ec14216f54a79c4e89df6b1ca8f1caa
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_SaoDangZhuangTai1
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 31
-        width: 28
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aa85e21427c54144bbb47eff0b822f73
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_SaoDangZhuangTai2
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 31
-        width: 28
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b8334c2466c09a40b9ac0d4459c108b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_TanChuangFenGeXian
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 169
-        width: 10
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1fb11552b109ed049ae6b3cd15325215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_TanChuangJianTou
-      rect:
-        serializedVersion: 2
-        x: 155
-        y: 3
-        width: 44
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0bb77a0a30885e94798aec7648b11923
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_TanHao
-      rect:
-        serializedVersion: 2
-        x: 195
-        y: 31
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3ca0538aea8593043a88dfd445985fac
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00_oth_DH6_WenHao
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 175
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0f02748eb8cff45428d0cd1a9319121d
+      spriteID: c5daf53cdb375e480800000000000000
+      internalID: -8870556632172483236
       vertices: []
       indices: 
       edges: []
@@ -601,13 +168,17 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: 
+    secondaryTextures: []
+    nameFileIdTable:
+      00_icon: 6305082244211501068
+      00_login: -8870556632172483236
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: atlas/atlas00
   assetBundleVariant: atlas_ab

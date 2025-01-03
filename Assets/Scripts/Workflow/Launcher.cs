@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
-using LitJson;
+using Newtonsoft.Json;
 
 
 
@@ -27,14 +27,11 @@ public class Launcher : MonoBehaviour
         m_nowDownloadNum = 0;
         m_needDownloadNum = -1;
 
-        if (DataUtilityManager.m_platform == "Windows")
-        {
-            m_needDownloadNum = 3;
-        }
-        else
-        {
-            StartCoroutine(DownloadCatalogueFile());
-        }
+#if UNITY_EDITOR
+        m_needDownloadNum = 3;
+#else
+        StartCoroutine(DownloadCatalogueFile());
+#endif
     }
 
     private void Update()
@@ -50,7 +47,7 @@ public class Launcher : MonoBehaviour
             if (m_nowDownloadNum >= m_needDownloadNum)
             {
                 m_needDownloadNum = -1;
-                SdkMsgManager.Instance.Init();
+                InitSdk();
                 MessageNetManager.Instance.Play();
                 LuaManager.Instance.Reset();
                 Destroy(m_loadingPanel);
@@ -115,7 +112,7 @@ public class Launcher : MonoBehaviour
                         {
                             streamWriter.Write(downloadCatalogueText);
 
-                            Dictionary<string, string> webFileData = JsonMapper.ToObject<Dictionary<string, string>>(downloadCatalogueText);
+                            Dictionary<string, string> webFileData = JsonConvert.DeserializeObject<Dictionary<string, string>>(downloadCatalogueText);
 
                             m_needDownloadNum = webFileData.Count;
 
@@ -166,8 +163,8 @@ public class Launcher : MonoBehaviour
         updatePath = new List<string>();
         deletePath = new List<string>();
 
-        Dictionary<string, string> webFileData = JsonMapper.ToObject<Dictionary<string, string>>(downloadCatalogueText);
-        Dictionary<string, string> localFileData = JsonMapper.ToObject<Dictionary<string, string>>(localCatalogueText);
+        Dictionary<string, string> webFileData = JsonConvert.DeserializeObject<Dictionary<string, string>>(downloadCatalogueText);
+        Dictionary<string, string> localFileData = JsonConvert.DeserializeObject<Dictionary<string, string>>(localCatalogueText);
 
         foreach (var filePath in webFileData.Keys)
         {
@@ -226,5 +223,11 @@ public class Launcher : MonoBehaviour
         }
 
         requestHandler.Dispose();
+    }
+
+    private void InitSdk()
+    {
+        GameObject SdkMsgManager = new GameObject("SdkMsgManager");
+        SdkMsgManager.AddComponent<SdkMsgManager>();
     }
 }

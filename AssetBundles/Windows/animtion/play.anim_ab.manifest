@@ -1,18 +1,22 @@
 ManifestFileVersion: 0
-CRC: 1232335042
+CRC: 2458483539
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e8622e259276e2ee4cc34f0c4ea677be
+    Hash: 846cd3b84943b83d19396adb7689789e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e9ff7947e86ac18259f8d8c6c35c7861
+    Hash: 2efc7cb271410f566fa6baec4ab376f1
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 846cd3b84943b83d19396adb7689789e
 HashAppended: 0
 ClassTypes:
 - Class: 74
   Script: {instanceID: 0}
 - Class: 115
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/UpdateAssets/Animtion/Play.anim
 Dependencies: []

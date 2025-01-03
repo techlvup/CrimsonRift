@@ -400,4 +400,11 @@ public static partial class LuaCallCS
         Transform transform = GetTransform(obj);
         transform.parent = parent;
     }
+
+    public static SdkMsgManager GetSdkMsgManager()
+    {
+        GameObject obj = GameObject.Find("SdkMsgManager");
+        SdkMsgManager sdkMsgManager = obj?.GetComponent<SdkMsgManager>();
+        return sdkMsgManager;
+    }
 }
