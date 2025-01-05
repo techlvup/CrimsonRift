@@ -11,9 +11,8 @@ using Newtonsoft.Json;
 public static class ExportCatalogueFile
 {
     private static string m_rootPath = Application.streamingAssetsPath.Replace("Assets/StreamingAssets", "");
-    private static string m_clientConfigPath = m_rootPath + "ConfigData/Client";
-    private static string m_serverConfigPath = m_rootPath + "ConfigData/Server";
-    private static string m_aesKeyAndIvDataPath = m_rootPath + "ConfigData/ConfigDecryptData";
+    private static string m_clientConfigPath = m_rootPath + "Bin/Config/Client";
+    private static string m_serverConfigPath = m_rootPath + "Bin/Config/Server";
     private static string m_catalogueFilePath_Windows = m_rootPath + "CatalogueFiles/Windows";
     private static string m_catalogueFilePath_Android = m_rootPath + "CatalogueFiles/Android";
     private static string m_luaPath = m_rootPath + "Lua";
@@ -37,7 +36,7 @@ public static class ExportCatalogueFile
     [MenuItem("GodDragonTool/打包流程/一键导出所有热更新资源")]
     public static void OneKeyExportAllAssets()
     {
-        ExportExcelTool.ExportExcelDataToLuaTableString();
+        ExportExcelTool.ExportExcelToDictionary();
         AtlasBuilder.PackSpriteAtlas();
         ExportAssetBundle.BuildAssetBundles_Windows();
         ExportAssetBundle.BuildAssetBundles_Android();
@@ -57,7 +56,6 @@ public static class ExportCatalogueFile
             {
                 SetMd5Files(m_clientConfigPath);
                 SetMd5Files(m_serverConfigPath);
-                SetMd5Files(m_aesKeyAndIvDataPath);
                 SetMd5Files(m_luaPath);
                 SetMd5Files(catalogueDirectoryPath.Replace("CatalogueFiles", "AssetBundles"));
 

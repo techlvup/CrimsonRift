@@ -37,6 +37,8 @@ public class ExportAssetBundle
 
         SetPrefabImportSettings();
 
+        SetAtlasImportSettings();
+
         SetMaterialImportSettings();
 
         SetAnimImportSettings();
@@ -94,11 +96,11 @@ public class ExportAssetBundle
         }
     }
 
-    private static void SetMaterialImportSettings()
+    private static void SetAtlasImportSettings()
     {
-        string dir = "Assets/UpdateAssets/Materials";
+        string dir = "Assets/UpdateAssets/Atlas";
 
-        string[] assetGUIDs = AssetDatabase.FindAssets("t:Material", new string[] { dir });//会包括子文件夹内符合要求的文件
+        string[] assetGUIDs = AssetDatabase.FindAssets("t:Sprite", new string[] { dir });//会包括子文件夹内符合要求的文件
 
         if (assetGUIDs.Length <= 0)
         {
@@ -109,8 +111,44 @@ public class ExportAssetBundle
         {
             string assetPath = AssetDatabase.GUIDToAssetPath(assetGUIDs[i]);
             string assetBundleName = assetPath.Replace("Assets/UpdateAssets/", "");
+            assetBundleName = assetBundleName.Replace(".png", "");
+            SetAssetImportSettings(assetPath, assetBundleName, "atlas_ab");
+        }
+    }
+
+    private static void SetMaterialImportSettings()
+    {
+        string dir = m_rootPath + "Assets/UpdateAssets/Materials";
+
+        DirectoryInfo directoryInfo = new DirectoryInfo(dir);
+        DirectoryInfo[] directoryInfos = directoryInfo.GetDirectories();
+
+        foreach (var directory in directoryInfos)
+        {
+            string assetDirectoryPath = directory.FullName.Replace("\\","/").Replace(m_rootPath, "");
+
+            //会包括子文件夹内符合要求的文件
+            string[] assetGUIDs1 = AssetDatabase.FindAssets("t:Material", new string[] { assetDirectoryPath });
+
+            if (assetGUIDs1.Length != 1)
+            {
+                continue;
+            }
+
+            string assetPath1 = AssetDatabase.GUIDToAssetPath(assetGUIDs1[0]);
+            string assetBundleName = assetPath1.Replace("Assets/UpdateAssets/", "");
             assetBundleName = assetBundleName.Replace(".mat", "");
-            SetAssetImportSettings(assetPath, assetBundleName, "mat_ab");
+            SetAssetImportSettings(assetPath1, assetBundleName, "mat_ab");
+
+            string[] assetGUIDs2 = AssetDatabase.FindAssets("t:Shader", new string[] { assetDirectoryPath });
+
+            if (assetGUIDs2.Length != 1)
+            {
+                continue;
+            }
+
+            string assetPath2 = AssetDatabase.GUIDToAssetPath(assetGUIDs2[0]);
+            SetAssetImportSettings(assetPath2, assetBundleName, "mat_ab");
         }
     }
 

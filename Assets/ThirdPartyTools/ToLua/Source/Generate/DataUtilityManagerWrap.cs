@@ -14,7 +14,7 @@ public class DataUtilityManagerWrap
 		L.RegVar("m_platform", get_m_platform, set_m_platform);
 		L.RegVar("m_localRootPath", get_m_localRootPath, set_m_localRootPath);
 		L.RegVar("m_webRootPath", get_m_webRootPath, set_m_webRootPath);
-		L.RegVar("m_configPath", get_m_configPath, set_m_configPath);
+		L.RegVar("m_binPath", get_m_binPath, set_m_binPath);
 		L.RegVar("m_webIpv4Str", get_m_webIpv4Str, set_m_webIpv4Str);
 		L.RegVar("m_webPortInt", get_m_webPortInt, set_m_webPortInt);
 		L.EndClass();
@@ -120,11 +120,11 @@ public class DataUtilityManagerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int get_m_configPath(IntPtr L)
+	static int get_m_binPath(IntPtr L)
 	{
 		try
 		{
-			LuaDLL.lua_pushstring(L, DataUtilityManager.m_configPath);
+			LuaDLL.lua_pushstring(L, DataUtilityManager.m_binPath);
 			return 1;
 		}
 		catch (Exception e)
@@ -207,12 +207,12 @@ public class DataUtilityManagerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int set_m_configPath(IntPtr L)
+	static int set_m_binPath(IntPtr L)
 	{
 		try
 		{
 			string arg0 = ToLua.CheckString(L, 2);
-			DataUtilityManager.m_configPath = arg0;
+			DataUtilityManager.m_binPath = arg0;
 			return 0;
 		}
 		catch (Exception e)

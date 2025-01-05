@@ -11,6 +11,9 @@ function LoginPanel.Awake(instance)
     LuaCallCS.SetActive(gameObject, "Sli_Progress", false)
 
     LuaCallCS.PlayAnimation(gameObject, nil, "Play", WrapMode.Once, function()
+        LuaCallCS.SetSpriteImage(gameObject, "Img_State1", "Atlas02/02_bb_DH6_FunOpen10", true)
+        LuaCallCS.SetSpriteImage(gameObject, "Img_State2", "Atlas02/02_bb_DH6_FunOpen11", true)
+        LuaCallCS.SetText(gameObject, "Text_Name", LuaCallCS.GetConfigData("Player", "1_4", "Stageicon"))
         LuaCallCS.AddClickListener(gameObject, "Btn_Login", LoginPanel.Login)
     end)
 end

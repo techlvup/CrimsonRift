@@ -263,7 +263,7 @@ public static partial class LuaCallCS
 
             string[] atlasInfo = spritePath.Split('/');
             string assetBundleName = atlasInfo[0];
-            string[] assetNames = new string[]{ assetBundleName + ".png", assetBundleName + "Material.mat" };
+            string[] assetNames = new string[]{ assetBundleName + ".png" };
 
             AssetBundleManager.LoadAssetBundle(DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/atlas/" + assetBundleName.ToLower() + ".atlas_ab", assetNames, (name, asset) => {
                 if (name == assetNames[0])
@@ -290,16 +290,13 @@ public static partial class LuaCallCS
                     {
                         image.sprite = sprite;
 
+                        image.sprite.name = imageName;
+
                         if (isSetNativeSize)
                         {
                             SetSpriteImageNativeSize(image);
                         }
                     }
-                }
-                else if (name == assetNames[1])
-                {
-                    Material material = asset as Material;
-                    image.material = material;
                 }
             });
         }
@@ -330,7 +327,7 @@ public static partial class LuaCallCS
 
             string[] atlasInfo = texturePath.Split('/');
             string assetBundleName = atlasInfo[0];
-            string[] assetNames = new string[] { assetBundleName + ".png", assetBundleName + "Material.mat" };
+            string[] assetNames = new string[] { assetBundleName + ".png" };
 
             AssetBundleManager.LoadAssetBundle(DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/atlas/" + assetBundleName.ToLower() + ".atlas_ab", assetNames, (name, asset) => {
                 if (name == assetNames[0])
@@ -360,16 +357,13 @@ public static partial class LuaCallCS
                     {
                         rawImage.texture = texture;
 
+                        rawImage.texture.name = imageName;
+
                         if (isSetNativeSize)
                         {
                             SetTextureRawImageNativeSize(rawImage);
                         }
                     }
-                }
-                else if (name == assetNames[1])
-                {
-                    Material material = asset as Material;
-                    rawImage.material = material;
                 }
             });
         }
@@ -378,6 +372,58 @@ public static partial class LuaCallCS
     public static void SetTextureRawImageNativeSize(RawImage rawImage)
     {
         rawImage.SetNativeSize();
+    }
+
+    public static void SetGray(UnityEngine.Object obj, string childPath = "", bool isGray = true)
+    {
+        Transform trans = GetTransform(obj);
+
+        if (!string.IsNullOrEmpty(childPath))
+        {
+            trans = trans.Find(childPath);
+        }
+
+        if (trans == null)
+        {
+            return;
+        }
+
+        Image image = trans.GetComponent<Image>();
+        RawImage rawImage = trans.GetComponent<RawImage>();
+
+        if (image == null && rawImage == null)
+        {
+            return;
+        }
+
+        if(isGray)
+        {
+            string[] assetNames = new string[] { "GrayscaleMaterial.mat" };
+
+            AssetBundleManager.LoadAssetBundle(DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/materials/grayscale/grayscalematerial.mat_ab", assetNames, (name, asset) => {
+                if (name == assetNames[0])
+                {
+                    Material material = asset as Material;
+
+                    if (image != null)
+                    {
+                        image.material = material;
+                    }
+                    else if (rawImage != null)
+                    {
+                        rawImage.material = material;
+                    }
+                }
+            });
+        }
+        else if (image != null)
+        {
+            image.material = null;
+        }
+        else if (rawImage != null)
+        {
+            rawImage.material = null;
+        }
     }
 
     public static void SetText(UnityEngine.Object obj, string childPath = "", string des = "")

@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1263556265
+CRC: 1421138463
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: af819f4ff648960d94508edae94486b5
+    Hash: 1f25fcc3ff7c6aca92c3cb0f72fc4a28
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0034942f61fcf9e24a361e52290ae3a7
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: af819f4ff648960d94508edae94486b5
+    Hash: 1f25fcc3ff7c6aca92c3cb0f72fc4a28
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -67,3 +67,6 @@ Assets:
 - Assets/UpdateAssets/UI/Workflow/LoginPanel.prefab
 Dependencies:
 - E:/MyProjects/CrimsonRift/AssetBundles/Android/animtion/play.anim_ab
+- E:/MyProjects/CrimsonRift/AssetBundles/Android/atlas/atlas00.atlas_ab
+- E:/MyProjects/CrimsonRift/AssetBundles/Android/atlas/atlas01.atlas_ab
+- E:/MyProjects/CrimsonRift/AssetBundles/Android/atlas/bg_hghg_wdtx1.atlas_ab

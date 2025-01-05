@@ -7,31 +7,15 @@ using ExcelDataReader;
 
 public class ExportExcelTool
 {
-    private static Dictionary<string, Dictionary<string, byte[]>> m_aesKeyAndIvDatas = null;
-    private static Dictionary<string, Dictionary<string, int>> m_configKeys = null;
-
-
-
     [MenuItem("GodDragonTool/导出Excel表的配置数据")]
-    public static void ExportExcelDataToLuaTableString()
+    public static void ExportExcelToDictionary()
     {
-        if (Directory.Exists(DataUtilityManager.m_configPath))
+        if (Directory.Exists(DataUtilityManager.m_binPath + "/Config"))
         {
-            Directory.Delete(DataUtilityManager.m_configPath, true);
+            Directory.Delete(DataUtilityManager.m_binPath + "/Config", true);
         }
 
-        if (m_aesKeyAndIvDatas == null)
-        {
-            m_aesKeyAndIvDatas = new Dictionary<string, Dictionary<string, byte[]>>();
-        }
-
-        if (m_configKeys == null)
-        {
-            m_configKeys = new Dictionary<string, Dictionary<string, int>>();
-        }
-
-        string configPath = DataUtilityManager.m_localRootPath + "ConfigFile";
-        DirectoryInfo directoryInfo = new DirectoryInfo(configPath);
+        DirectoryInfo directoryInfo = new DirectoryInfo(DataUtilityManager.m_localRootPath + "Excel");
 
         FileInfo[] fileInfos = directoryInfo.GetFiles();
 
@@ -66,22 +50,6 @@ public class ExportExcelTool
             }
         }
 
-        if (m_aesKeyAndIvDatas.Count > 0)
-        {
-            LuaCallCS.SaveConfigDecryptData(m_aesKeyAndIvDatas, "AesKeyAndIvData.bin");
-            m_aesKeyAndIvDatas.Clear();
-        }
-
-        if (m_configKeys.Count > 0)
-        {
-            foreach (var item in m_configKeys)
-            {
-                LuaCallCS.SaveConfigDecryptData(item.Value, item.Key + "Keys.bin");
-            }
-
-            m_configKeys.Clear();
-        }
-
         EditorUtility.ClearProgressBar();
 
         AssetDatabase.Refresh();
@@ -91,28 +59,24 @@ public class ExportExcelTool
 
     private static void LoadExcelRowData(IExcelDataReader excelReader)
     {
-        List<int> clientColumnIndex = new List<int>();
-        List<int> serverColumnIndex = new List<int>();
-
-        List<string> fieldNameList = new List<string>();
-        List<string> dataTypeList = new List<string>();
-
-        Dictionary<string, string> clientConfigData = new Dictionary<string, string>();
-        Dictionary<string, string> serverConfigData = new Dictionary<string, string>();
+        var clientColumnIndex = new List<int>();
+        var serverColumnIndex = new List<int>();
+        var fieldNameList = new List<string>();
+        var dataTypeList = new List<string>();
+        var clientConfigData = new Dictionary<string, Dictionary<string, string>>();
+        var serverConfigData = new Dictionary<string, Dictionary<string, string>>();
 
         do
         {
             clientColumnIndex.Clear();
             serverColumnIndex.Clear();
-
             fieldNameList.Clear();
             dataTypeList.Clear();
-
             clientConfigData.Clear();
             serverConfigData.Clear();
 
-            int indexColumnIndex = 1;
-            int maxCol = 0;
+            string key = "";
+            int keyIndex = 1;
 
             Dictionary<string, int> configKey = new Dictionary<string, int>();
 
@@ -143,21 +107,6 @@ public class ExportExcelTool
                         }
                     }
 
-                    int clientMaxCol = 0;
-                    int serverMaxCol = 0;
-
-                    if (clientColumnIndex.Count > 0)
-                    {
-                        clientMaxCol = clientColumnIndex[clientColumnIndex.Count - 1];
-                    }
-
-                    if (serverColumnIndex.Count > 0)
-                    {
-                        serverMaxCol = serverColumnIndex[serverColumnIndex.Count - 1];
-                    }
-
-                    maxCol = Mathf.Max(clientMaxCol, serverMaxCol);
-
                     continue;
                 }
                 else if (excelReader.Depth == 2)
@@ -168,7 +117,7 @@ public class ExportExcelTool
                     {
                         if (columnData[i] == "Index")
                         {
-                            indexColumnIndex = i;
+                            keyIndex = i;
                             break;
                         }
                     }
@@ -186,38 +135,20 @@ public class ExportExcelTool
                     continue;
                 }
 
-                string dataIndex = "";
-
-                StringBuilder clientContent = new StringBuilder();
-                StringBuilder serverContent = new StringBuilder();
-
                 for (int i = 1; i < columnData.Count; i++)
                 {
-                    if (i == indexColumnIndex)
-                    {
-                        dataIndex = columnData[i];
-                    }
-
-                    bool isEnd1 = false;
-                    bool isEnd2 = i >= maxCol;
-
                     if (clientColumnIndex.Contains(i))
                     {
-                        isEnd1 = LoadExcelData(excelReader, i, dataIndex, columnData, clientColumnIndex, ref clientContent, fieldNameList, dataTypeList, ref clientConfigData, "Client", ref configKey);
+                        LoadExcelData(dataTypeList[i], fieldNameList[i], columnData[i], ref clientConfigData, columnData[keyIndex]);
                     }
 
                     if (serverColumnIndex.Contains(i))
                     {
-                        isEnd1 = LoadExcelData(excelReader, i, dataIndex, columnData, serverColumnIndex, ref serverContent, fieldNameList, dataTypeList, ref serverConfigData, "Server", ref configKey);
+                        LoadExcelData(dataTypeList[i], fieldNameList[i], columnData[i], ref serverConfigData, columnData[keyIndex]);
                     }
 
-                    if (isEnd1 && isEnd2)
+                    if (columnData[0] == "END")
                     {
-                        if (configKey.Count > 0)
-                        {
-                            m_configKeys[excelReader.Name] = configKey;
-                        }
-
                         goto over;
                     }
                 }
@@ -226,6 +157,9 @@ public class ExportExcelTool
             }
 
         over:;
+
+            SaveConfigData("Client", excelReader.Name, clientConfigData);
+            SaveConfigData("Server", excelReader.Name, serverConfigData);
         }
         while (excelReader.NextResult()/*下一张表*/);
     }
@@ -253,104 +187,25 @@ public class ExportExcelTool
         return columnData;
     }
 
-    private static bool LoadExcelData(IExcelDataReader excelReader, int columnIndex, string dataIndex, List<string> columnData, List<int> platformColumnIndex, ref StringBuilder content, List<string> fieldNameList, List<string> dataTypeList, ref Dictionary<string, string> platformConfigData, string platformName, ref Dictionary<string, int> configKey)
+    private static void LoadExcelData(string type, string name, string data, ref Dictionary<string, Dictionary<string, string>> content, string key)
     {
-        if (columnIndex == platformColumnIndex[0])
+        if(!content.ContainsKey(key))
         {
-            content.Append("local data = {");
+            content[key] = new Dictionary<string, string>();
         }
 
-        content.Append("\r\n\t[\"");
-        content.Append(fieldNameList[columnIndex]);
-
-        if (dataTypeList[columnIndex] == "Number")
-        {
-            content.Append("\"] = ");
-            content.Append(columnData[columnIndex]);
-            content.Append(",");
-        }
-        else if (dataTypeList[columnIndex] == "String")
-        {
-            content.Append("\"] = \"");
-            content.Append(columnData[columnIndex]);
-            content.Append("\",");
-        }
-
-        if (columnIndex == platformColumnIndex[platformColumnIndex.Count - 1])
-        {
-            content.Append("\r\n}\r\n\nreturn data");
-
-            if (!string.IsNullOrEmpty(dataIndex))
-            {
-                platformConfigData.Add(dataIndex, content.ToString());
-                configKey[dataIndex] = platformConfigData.Count;
-            }
-
-            if (platformConfigData.Count >= 100 || excelReader.Depth + 1 == excelReader.RowCount)
-            {
-                SaveConfigData(excelReader, ref platformConfigData, platformName);
-            }
-
-            if (columnData[0] == "END")
-            {
-                return true;
-            }
-        }
-
-        return false;
+        content[key][name] = data;
     }
 
-    private static void SaveConfigData(IExcelDataReader excelReader, ref Dictionary<string, string> configData, string platform)
+    private static void SaveConfigData(string platform, string name, Dictionary<string, Dictionary<string, string>> configData)
     {
         if (configData.Count <= 0)
         {
             return;
         }
 
-        string configName = excelReader.Name;
+        LuaCallCS.SaveSafeFile(configData, DataUtilityManager.m_binPath + "/Config/" + platform + "/" + name + ".bin");
 
-        if (!m_aesKeyAndIvDatas.ContainsKey(configName))
-        {
-            Dictionary<string, byte[]> aesKeyAndIvData = new Dictionary<string, byte[]>();
-
-            byte[] key = LuaCallCS.GetRandomByteData(16);
-            byte[] iv = LuaCallCS.GetRandomByteData(16);
-
-            aesKeyAndIvData.Add("Key", key);
-            aesKeyAndIvData.Add("Iv", iv);
-
-            m_aesKeyAndIvDatas.Add(configName, aesKeyAndIvData);
-        }
-
-        byte[] serializeBytes = LuaCallCS.SerializeData(configData);
-        byte[] compressBytes = LuaCallCS.CompressByteData(serializeBytes);
-        byte[] encryptBytes = LuaCallCS.EncryptByteData(compressBytes, m_aesKeyAndIvDatas[configName]["Key"], m_aesKeyAndIvDatas[configName]["Iv"]);
-
-        string directoryPath = DataUtilityManager.m_configPath + "/" + platform + "/" + configName;
-
-        DataUtilityManager.InitDirectory(directoryPath);
-
-        int fileIndex = excelReader.Depth - 3;
-
-        if (fileIndex % 100 != 0)
-        {
-            fileIndex = 100 - fileIndex % 100 + fileIndex;
-        }
-
-        CreateBinFile(directoryPath + "/" + configName + fileIndex + ".bin", encryptBytes);
-
-        configData.Clear();
-    }
-
-    private static void CreateBinFile(string path, byte[] inputBytes)
-    {
-        LuaCallCS.CreateFileByBytes(path, inputBytes);
-        AssetDatabase.Refresh();
-    }
-
-    private static void CreateTxtFile(string path, string content)
-    {
-        LuaCallCS.CreateTxtFile(path, content);
         AssetDatabase.Refresh();
     }
 }
