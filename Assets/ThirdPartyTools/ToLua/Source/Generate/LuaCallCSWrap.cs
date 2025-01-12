@@ -57,6 +57,8 @@ public class LuaCallCSWrap
 		L.RegFunction("SendMessage", SendMessage);
 		L.RegFunction("BindReceiveMessage", BindReceiveMessage);
 		L.RegFunction("UnbindReceiveMessage", UnbindReceiveMessage);
+		L.RegVar("MainUICamera", get_MainUICamera, null);
+		L.RegVar("MainUIRoot", get_MainUIRoot, null);
 		L.EndStaticLibs();
 	}
 
@@ -1855,6 +1857,34 @@ public class LuaCallCSWrap
 			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 2);
 			LuaCallCS.UnbindReceiveMessage(arg0, arg1);
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_MainUICamera(IntPtr L)
+	{
+		try
+		{
+			ToLua.PushSealed(L, LuaCallCS.MainUICamera);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_MainUIRoot(IntPtr L)
+	{
+		try
+		{
+			ToLua.PushSealed(L, LuaCallCS.MainUIRoot);
+			return 1;
 		}
 		catch (Exception e)
 		{

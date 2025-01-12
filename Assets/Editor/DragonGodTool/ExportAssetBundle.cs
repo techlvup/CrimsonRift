@@ -55,9 +55,18 @@ public class ExportAssetBundle
             string newBundlePath = mainBundlePath + ".mainbundle";
             File.Move(mainBundlePath, newBundlePath);
         }
-        else
+
+        string platform = Path.GetFileName(mainBundlePath);
+        string tempFile = mainBundlePath.Substring(0, mainBundlePath.LastIndexOf(platform)) + "tempAssetBundle";
+
+        if (File.Exists(tempFile))
         {
-            Debug.LogWarning("主AssetBundle文件不存在");
+            File.Delete(tempFile);
+        }
+
+        if (File.Exists(tempFile + ".manifest"))
+        {
+            File.Delete(tempFile + ".manifest");
         }
     }
 
