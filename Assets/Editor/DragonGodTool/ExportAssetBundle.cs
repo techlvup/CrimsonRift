@@ -10,14 +10,14 @@ public class ExportAssetBundle
 
 
 
-    [MenuItem("GodDragonTool/导出AssetBundles文件/BuildAssetBundles_Windows")]
+    [MenuItem("GodDragonTool/AssetBundles/BuildAssetBundles_Windows")]
     public static void BuildAssetBundles_Windows()
     {
         BuildAssetBundles(m_rootPath + "AssetBundles/Windows", BuildTarget.StandaloneWindows64);
         RenameMainAssetBundleFile(m_rootPath + "AssetBundles/Windows/Windows");
     }
 
-    [MenuItem("GodDragonTool/导出AssetBundles文件/BuildAssetBundles_Android")]
+    [MenuItem("GodDragonTool/AssetBundles/BuildAssetBundles_Android")]
     public static void BuildAssetBundles_Android()
     {
         BuildAssetBundles(m_rootPath + "AssetBundles/Android", BuildTarget.Android);

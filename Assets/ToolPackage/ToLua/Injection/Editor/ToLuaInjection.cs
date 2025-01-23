@@ -118,7 +118,7 @@ public static class ToLuaInjection
         }
     }
 	
-    [MenuItem("Lua/Inject All &i", false, 5)]
+    //[MenuItem("Lua/Inject All &i", false, 5)]
     static void InjectByMenu()
     {
         if (Application.isPlaying)

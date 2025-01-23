@@ -7,7 +7,7 @@ using ExcelDataReader;
 
 public class ExportExcelTool
 {
-    [MenuItem("GodDragonTool/导出Excel表的配置数据")]
+    [MenuItem("GodDragonTool/Config/导出Excel表的配置数据")]
     public static void ExportExcelToDictionary()
     {
         if (Directory.Exists(DataUtilityManager.m_binPath + "/Config"))

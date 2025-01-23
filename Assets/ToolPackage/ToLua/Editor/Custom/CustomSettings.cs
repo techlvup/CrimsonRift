@@ -210,7 +210,7 @@ public static class CustomSettings
     }    
 
 
-    [MenuItem("Lua/Attach Profiler", false, 151)]
+    //[MenuItem("Lua/Attach Profiler", false, 151)]
     static void AttachProfiler()
     {
         if (!Application.isPlaying)
@@ -222,7 +222,7 @@ public static class CustomSettings
         LuaClient.Instance.AttachProfiler();
     }
 
-    [MenuItem("Lua/Detach Profiler", false, 152)]
+    //[MenuItem("Lua/Detach Profiler", false, 152)]
     static void DetachProfiler()
     {
         if (!Application.isPlaying)

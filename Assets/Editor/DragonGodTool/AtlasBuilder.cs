@@ -13,7 +13,7 @@ public class AtlasBuilder
 
 
 
-    [MenuItem("GodDragonTool/导出图集资源")]
+    [MenuItem("GodDragonTool/Atlas/导出图集资源")]
     public static void PackSpriteAtlas()
     {
         if (Directory.Exists(m_atlasRootPath))

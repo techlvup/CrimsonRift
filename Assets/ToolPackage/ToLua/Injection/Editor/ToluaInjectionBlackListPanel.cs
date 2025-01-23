@@ -48,7 +48,7 @@ public class InjectionBlackListGenerator : EditorWindow
     };
 
 #if ENABLE_LUA_INJECTION
-    [MenuItem("Lua/Generate LuaInjection BlackList")]
+    //[MenuItem("Lua/Generate LuaInjection BlackList")]
 #endif
     public static void Open()
     {
