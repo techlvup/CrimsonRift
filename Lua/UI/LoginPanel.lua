@@ -15,6 +15,7 @@ function LoginPanel.Awake(instance)
         LuaCallCS.SetSpriteImage(gameObject, "Img_State2", "Atlas02/02_bb_DH6_FunOpen11", true)
         LuaCallCS.SetText(gameObject, "Text_Name", LuaCallCS.GetConfigData("Player", "1_4", "Stageicon"))
         LuaCallCS.AddClickListener(gameObject, "Btn_Login", LoginPanel.Login)
+        LuaCallCS.SetGray(gameObject, "Img_State2")
     end)
 end
 

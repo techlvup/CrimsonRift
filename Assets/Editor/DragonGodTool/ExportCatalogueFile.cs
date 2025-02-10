@@ -11,11 +11,8 @@ using Newtonsoft.Json;
 public static class ExportCatalogueFile
 {
     private static string m_rootPath = Application.streamingAssetsPath.Replace("Assets/StreamingAssets", "");
-    private static string m_clientConfigPath = m_rootPath + "Bin/Config/Client";
-    private static string m_serverConfigPath = m_rootPath + "Bin/Config/Server";
     private static string m_catalogueFilePath_Windows = m_rootPath + "CatalogueFiles/Windows";
     private static string m_catalogueFilePath_Android = m_rootPath + "CatalogueFiles/Android";
-    private static string m_luaPath = m_rootPath + "Lua";
 
     private static Dictionary<string,string> m_filesContent = null;
 
@@ -43,9 +40,9 @@ public static class ExportCatalogueFile
         {
             using (StreamWriter sw = new StreamWriter(fs))
             {
-                SetMd5Files(m_clientConfigPath);
-                SetMd5Files(m_serverConfigPath);
-                SetMd5Files(m_luaPath);
+                SetMd5Files(m_rootPath + "Bin/Config/Client");
+                SetMd5Files(m_rootPath + "Bin/Atlas");
+                SetMd5Files(m_rootPath + "Lua");
                 SetMd5Files(catalogueDirectoryPath.Replace("CatalogueFiles", "AssetBundles"));
 
                 if (m_filesContent != null && m_filesContent.Count > 0)

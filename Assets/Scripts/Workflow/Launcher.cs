@@ -79,6 +79,8 @@ public class Launcher : MonoBehaviour
         m_loadingPanel = Instantiate(Resources.Load<GameObject>("GameLoadingPanel"), UI_Root.transform.Find("Canvas_0/Ts_Panel"));
         m_loadingPanel.name = "GameLoadingPanel";
         m_loadingInfo = m_loadingPanel.GetComponent<GameLoadingPanel>();
+
+        m_loadingInfo.SetDes("加载中");
     }
 
     private IEnumerator DownloadCatalogueFile()
