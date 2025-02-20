@@ -10,18 +10,32 @@ public class ExportAssetBundle
 
 
 
-    [MenuItem("GodDragonTool/AssetBundles/BuildAssetBundles_Windows")]
+    [MenuItem("GodDragonTool/AssetBundles/BuildAssetBundles_Android", false, 1)]
+    public static void BuildAssetBundles_Android()
+    {
+        BuildAssetBundles(m_rootPath + "AssetBundles/Android", BuildTarget.Android);
+        RenameMainAssetBundleFile(m_rootPath + "AssetBundles/Android/Android");
+    }
+
+    [MenuItem("GodDragonTool/AssetBundles/BuildAssetBundles_Windows", false, 3)]
     public static void BuildAssetBundles_Windows()
     {
         BuildAssetBundles(m_rootPath + "AssetBundles/Windows", BuildTarget.StandaloneWindows64);
         RenameMainAssetBundleFile(m_rootPath + "AssetBundles/Windows/Windows");
     }
 
-    [MenuItem("GodDragonTool/AssetBundles/BuildAssetBundles_Android")]
-    public static void BuildAssetBundles_Android()
+    [MenuItem("GodDragonTool/AssetBundles/BuildWebBinFile", false, 4)]
+    public static void BuildWebBinFile()
     {
-        BuildAssetBundles(m_rootPath + "AssetBundles/Android", BuildTarget.Android);
-        RenameMainAssetBundleFile(m_rootPath + "AssetBundles/Android/Android");
+        using (FileStream fileStream = new FileStream(DataUtilityManager.m_localRootPath + "WebData.txt", FileMode.Open))
+        {
+            using (StreamReader streamReader = new StreamReader(fileStream))
+            {
+                LuaCallCS.SaveSafeFile(streamReader.ReadToEnd(), Application.streamingAssetsPath + "/WebData.bin");
+            }
+        }
+
+        AssetDatabase.Refresh();
     }
 
 
@@ -86,10 +100,9 @@ public class ExportAssetBundle
 
     private static void SetPrefabImportSettings()
     {
-        string dir1 = "Assets/UpdateAssets/UI";
-        string dir2 = "Assets/UpdateAssets/Prefabs";
+        string dir = "Assets/UpdateAssets/Prefabs";
 
-        string[] assetGUIDs = AssetDatabase.FindAssets("t:Prefab", new string[] { dir1, dir2 });//会包括子文件夹内符合要求的文件
+        string[] assetGUIDs = AssetDatabase.FindAssets("t:Prefab", new string[] { dir });//会包括子文件夹内符合要求的文件
 
         if (assetGUIDs.Length <= 0)
         {

@@ -142,7 +142,7 @@ public static partial class LuaCallCS
         {
             string[] assetNames = new string[] { prefabName + ".prefab" };
 
-            AssetBundleManager.LoadAssetBundle(DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/" + prefabPath.ToLower() + ".prefab_ab", assetNames, (name, asset) => {
+            AssetBundleManager.LoadAssetBundle(DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/prefabs/" + prefabPath.ToLower() + ".prefab_ab", assetNames, (name, asset) => {
                 if (name == assetNames[0])
                 {
                     gameObject = GameObject.Instantiate((GameObject)asset, parentTrans);

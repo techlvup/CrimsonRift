@@ -2,11 +2,11 @@
 using System;
 using LuaInterface;
 
-public class DebugLogDesWrap
+public class DebugLogToolWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginStaticLibs("DebugLogDes");
+		L.BeginStaticLibs("DebugLogTool");
 		L.RegFunction("DebugRedLog", DebugRedLog);
 		L.RegFunction("DebugYellowLog", DebugYellowLog);
 		L.RegFunction("DebugBlueLog", DebugBlueLog);
@@ -24,7 +24,7 @@ public class DebugLogDesWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			DebugLogDes.DebugRedLog(arg0);
+			DebugLogTool.DebugRedLog(arg0);
 			return 0;
 		}
 		catch (Exception e)
@@ -40,7 +40,7 @@ public class DebugLogDesWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			DebugLogDes.DebugYellowLog(arg0);
+			DebugLogTool.DebugYellowLog(arg0);
 			return 0;
 		}
 		catch (Exception e)
@@ -56,7 +56,7 @@ public class DebugLogDesWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			DebugLogDes.DebugBlueLog(arg0);
+			DebugLogTool.DebugBlueLog(arg0);
 			return 0;
 		}
 		catch (Exception e)
@@ -72,7 +72,7 @@ public class DebugLogDesWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			DebugLogDes.DebugGreenLog(arg0);
+			DebugLogTool.DebugGreenLog(arg0);
 			return 0;
 		}
 		catch (Exception e)
@@ -88,7 +88,7 @@ public class DebugLogDesWrap
 		{
 			ToLua.CheckArgsCount(L, 1);
 			string arg0 = ToLua.CheckString(L, 1);
-			DebugLogDes.DebugBlackLog(arg0);
+			DebugLogTool.DebugBlackLog(arg0);
 			return 0;
 		}
 		catch (Exception e)
@@ -106,7 +106,7 @@ public class DebugLogDesWrap
 			string arg0 = ToLua.CheckString(L, 1);
 			string arg1 = ToLua.CheckString(L, 2);
 			UnityEngine.LogType arg2 = (UnityEngine.LogType)ToLua.CheckObject(L, 3, typeof(UnityEngine.LogType));
-			DebugLogDes.ShowDebugErrorLog(arg0, arg1, arg2);
+			DebugLogTool.ShowDebugErrorLog(arg0, arg1, arg2);
 			return 0;
 		}
 		catch (Exception e)
@@ -121,7 +121,7 @@ public class DebugLogDesWrap
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
-			DebugLogDes.InitDebugErrorLog();
+			DebugLogTool.InitDebugErrorLog();
 			return 0;
 		}
 		catch (Exception e)

@@ -197,6 +197,31 @@ public static partial class LuaCallCS
         return result;
     }
 
+    public static T ReadSafeFile<T>(byte[] inputBytes)
+    {
+        byte[] decryptBytes = DecryptByteData(inputBytes, Encoding.UTF8.GetBytes("95gbt368426hyb13"), Encoding.UTF8.GetBytes("i8g3451h5cxmj6rf"));
+        byte[] decompressedBytes = DecompressByteData(decryptBytes);
+
+        T result = Deserialize<T>(decompressedBytes);
+
+        return result;
+    }
+
+    public static string FormatFileByteSize(long bytes)
+    {
+        string[] units = { "B", "KB", "MB", "GB", "TB" };
+        int unitIndex = 0;
+        double size = bytes;
+
+        while (size >= 1024 && unitIndex < units.Length - 1)
+        {
+            size /= 1024;
+            unitIndex++;
+        }
+
+        return $"{size:0.##} {units[unitIndex]}";
+    }
+
     public static bool GetTextureRectByAtlasName(string atlasName, string textureName, out float[] rect)
     {
         rect = new float[4];

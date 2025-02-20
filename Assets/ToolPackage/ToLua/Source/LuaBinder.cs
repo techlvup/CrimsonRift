@@ -16,7 +16,7 @@ public static class LuaBinder
 		PrefabInstanceWrap.Register(L);
 		SdkMsgManagerWrap.Register(L);
 		DataUtilityManagerWrap.Register(L);
-		DebugLogDesWrap.Register(L);
+		DebugLogToolWrap.Register(L);
 		L.BeginModule("LuaInterface");
 		LuaInterface_LuaInjectionStationWrap.Register(L);
 		LuaInterface_InjectTypeWrap.Register(L);

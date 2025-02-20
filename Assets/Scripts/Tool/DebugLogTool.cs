@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-public static class DebugLogDes
+public static class DebugLogTool
 {
     public static void DebugRedLog(string log)
     {

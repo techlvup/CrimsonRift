@@ -9,17 +9,39 @@ public class DataUtilityManager
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
     public static string m_platform = "Windows";//当前平台
     public static string m_localRootPath = Application.streamingAssetsPath.Replace("Assets/StreamingAssets", "");//本地数据根目录
-    public static string m_webRootPath = "";//服务器数据根目录
 
 #elif UNITY_ANDROID
     public static string m_platform = "Android";
     public static string m_localRootPath = Application.persistentDataPath + "/";
-    public static string m_webRootPath = LoadWebDataTxt(0);
 #endif
 
     public static string m_binPath = m_localRootPath + "Bin";//存放bin文件的路径
-    public static string m_webIpv4Str = LoadWebDataTxt(3);//服务器的公网地址
-    public static int m_webPortInt = int.Parse(LoadWebDataTxt(4));//服务器用于连接客户端的端口号
+
+    private static string[] m_webData = null;
+
+    public static string WebRootPath//服务器数据根目录
+    {
+        get
+        {
+            return LoadWebData(0);
+        }
+    }
+
+    public static string WebIpv4Str//服务器的公网地址
+    {
+        get
+        {
+            return LoadWebData(3);
+        }
+    }
+
+    public static int WebPortInt//服务器用于连接客户端的端口号
+    {
+        get
+        {
+            return int.Parse(LoadWebData(4));
+        }
+    }
 
 
 
@@ -57,8 +79,8 @@ public class DataUtilityManager
 
     public static void SetWebQuestData(ref UnityWebRequest requestHandler)
     {
-        string username = LoadWebDataTxt(1);
-        string password = LoadWebDataTxt(2);
+        string username = LoadWebData(1);
+        string password = LoadWebData(2);
         string encodedAuth = Convert.ToBase64String(Encoding.UTF8.GetBytes(username + ":" + password));
 
         requestHandler.SetRequestHeader("Authorization", "Basic " + encodedAuth);
@@ -66,23 +88,24 @@ public class DataUtilityManager
         requestHandler.certificateHandler = new BypassCertificate();
     }
 
-    private static string LoadWebDataTxt(int index)
+    private static string LoadWebData(int index)
     {
-        string text = "";
-
-        using (UnityWebRequest requestHandler = UnityWebRequest.Get(Application.streamingAssetsPath + "/WebData.txt"))
+        if (m_webData == null)
         {
-            requestHandler.SendWebRequest();
-
-            while (!requestHandler.isDone)
+            using (UnityWebRequest requestHandler = UnityWebRequest.Get(Application.streamingAssetsPath + "/WebData.bin"))
             {
-                // 等待请求完成
+                requestHandler.SendWebRequest();
+
+                while (!requestHandler.isDone)
+                {
+                    // 等待请求完成
+                }
+
+                m_webData = LuaCallCS.ReadSafeFile<string>(requestHandler.downloadHandler.data).Split('\n');
             }
-
-            string[] des = requestHandler.downloadHandler.text.Split('\n');
-
-            text = des[index].Replace("\r", "");
         }
+
+        string text = m_webData[index].Replace("\r", "");
 
         return text;
     }

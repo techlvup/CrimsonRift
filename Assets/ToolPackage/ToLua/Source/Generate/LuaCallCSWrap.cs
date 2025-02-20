@@ -53,6 +53,7 @@ public class LuaCallCSWrap
 		L.RegFunction("EncryptByteData", EncryptByteData);
 		L.RegFunction("DecryptByteData", DecryptByteData);
 		L.RegFunction("SaveSafeFile", SaveSafeFile);
+		L.RegFunction("FormatFileByteSize", FormatFileByteSize);
 		L.RegFunction("GetTextureRectByAtlasName", GetTextureRectByAtlasName);
 		L.RegFunction("SendMessage", SendMessage);
 		L.RegFunction("BindReceiveMessage", BindReceiveMessage);
@@ -1786,6 +1787,23 @@ public class LuaCallCSWrap
 			string arg1 = ToLua.CheckString(L, 2);
 			LuaCallCS.SaveSafeFile(arg0, arg1);
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int FormatFileByteSize(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			long arg0 = LuaDLL.tolua_checkint64(L, 1);
+			string o = LuaCallCS.FormatFileByteSize(arg0);
+			LuaDLL.lua_pushstring(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{

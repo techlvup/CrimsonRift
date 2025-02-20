@@ -131,7 +131,7 @@ public static class CustomSettings
         _GT(typeof(PrefabInstance)),
         _GT(typeof(SdkMsgManager)),
         _GT(typeof(DataUtilityManager)),
-        _GT(typeof(DebugLogDes)),
+        _GT(typeof(DebugLogTool)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

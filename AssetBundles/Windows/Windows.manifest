@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2921281893
+CRC: 3452055340
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -24,15 +24,15 @@ AssetBundleManifest:
       Name: atlas/atlas01.atlas_ab
       Dependencies: {}
     Info_7:
-      Name: ui/workflow/loginpanel.prefab_ab
+      Name: audios/music.audio_ab
+      Dependencies: {}
+    Info_8:
+      Name: materials/grayscale/grayscalematerial.mat_ab
+      Dependencies: {}
+    Info_9:
+      Name: prefabs/ui/workflow/loginpanel.prefab_ab
       Dependencies:
         Dependency_0: atlas/atlas00.atlas_ab
         Dependency_1: atlas/bg_hghg_wdtx1.atlas_ab
         Dependency_2: animtion/play.anim_ab
         Dependency_3: atlas/atlas01.atlas_ab
-    Info_8:
-      Name: audios/music.audio_ab
-      Dependencies: {}
-    Info_9:
-      Name: materials/grayscale/grayscalematerial.mat_ab
-      Dependencies: {}
