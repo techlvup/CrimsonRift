@@ -3,9 +3,11 @@
 /Library/
 /Temp/
 /obj/
+/Logs/
 *.csproj
 *.sln
 *.vsconfig
 WebData.txt
 Assets/StreamingAssets/WebData.bin
 Assets/StreamingAssets/WebData.bin.meta
+UserSettings/Layouts/default-2022.dwlt
