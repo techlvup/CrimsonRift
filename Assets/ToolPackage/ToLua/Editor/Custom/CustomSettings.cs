@@ -132,6 +132,10 @@ public static class CustomSettings
         _GT(typeof(SdkMsgManager)),
         _GT(typeof(DataUtilityManager)),
         _GT(typeof(DebugLogTool)),
+        _GT(typeof(CircleRawImage)),
+        _GT(typeof(CircleImage)),
+        _GT(typeof(LoopScrollList)),
+        _GT(typeof(PolygonImage)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

@@ -17,6 +17,10 @@ public static class LuaBinder
 		SdkMsgManagerWrap.Register(L);
 		DataUtilityManagerWrap.Register(L);
 		DebugLogToolWrap.Register(L);
+		CircleRawImageWrap.Register(L);
+		CircleImageWrap.Register(L);
+		LoopScrollListWrap.Register(L);
+		PolygonImageWrap.Register(L);
 		L.BeginModule("LuaInterface");
 		LuaInterface_LuaInjectionStationWrap.Register(L);
 		LuaInterface_InjectTypeWrap.Register(L);
