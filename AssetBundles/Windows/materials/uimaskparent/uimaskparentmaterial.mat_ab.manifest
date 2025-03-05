@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 2871339449
+CRC: 1407033776
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7e662c845781e3567810ad03ee9b15d4
+    Hash: 33ed8153baa008f6ff7b51359ae3085d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5e762ccb57c4caaabbb5a4199ac82c23
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 7e662c845781e3567810ad03ee9b15d4
+    Hash: 33ed8153baa008f6ff7b51359ae3085d
 HashAppended: 0
 ClassTypes:
 - Class: 21
@@ -18,6 +18,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/UpdateAssets/Materials/Grayscale/GrayscaleShader.shader
-- Assets/UpdateAssets/Materials/Grayscale/GrayscaleMaterial.mat
+- Assets/UpdateAssets/Materials/UIMaskParent/UIMaskParentShader.shader
+- Assets/UpdateAssets/Materials/UIMaskParent/UIMaskParentMaterial.mat
 Dependencies: []

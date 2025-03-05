@@ -1,8 +1,9 @@
-Shader "MyShader/Grayscale"
+Shader "MyShader/UIMaskParent"
 {
     Properties
     {
         [PerRendererData] _MainTex ("Base (RGB)", 2D) = "white" {}
+        _Color ("Main Color", Color) = (1, 1, 1, 1)
     }
 
     SubShader
@@ -17,6 +18,14 @@ Shader "MyShader/Grayscale"
             // 渲染指令
             Blend SrcAlpha OneMinusSrcAlpha
 
+            ColorMask 0
+
+            Stencil {
+                Ref 1
+                Comp Always
+                Pass Replace
+            }
+
             HLSLPROGRAM
             #pragma vertex analyzeInputData// 指定顶点着色器函数
             #pragma fragment getOutputData// 指定片段着色器函数
@@ -24,6 +33,7 @@ Shader "MyShader/Grayscale"
 
             sampler2D _MainTex; // 实际的2D纹理对象
             float4 _MainTex_ST; // 与纹理坐标相关的变换信息（平移和缩放）
+            float4 _Color; // 颜色
 
             struct vertexStruct
             {
@@ -45,7 +55,7 @@ Shader "MyShader/Grayscale"
             {
                 fragmentStruct o;
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.color = v.color;
+                o.color = v.color * _Color;
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex); // 自动将_MainTex_ST的内容应用到uv坐标上
                 o.normal = v.normal; // 添加法线的初始化
                 return o;
@@ -53,9 +63,7 @@ Shader "MyShader/Grayscale"
 
             half4 getOutputData(fragmentStruct i) : SV_Target
             {
-                half4 color = tex2D(_MainTex, i.uv);
-                float gray = dot(color.rgb, half3(0.299, 0.587, 0.114));//灰度公式
-                color.rgb = gray.xxx;//float3(gray, gray, gray)
+                float4 color = tex2D(_MainTex, i.uv) * i.color;
                 return color;
             }
             ENDHLSL

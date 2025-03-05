@@ -21,6 +21,7 @@ public static class LuaBinder
 		CircleImageWrap.Register(L);
 		LoopScrollListWrap.Register(L);
 		PolygonImageWrap.Register(L);
+		UIMaskWrap.Register(L);
 		L.BeginModule("LuaInterface");
 		LuaInterface_LuaInjectionStationWrap.Register(L);
 		LuaInterface_InjectTypeWrap.Register(L);

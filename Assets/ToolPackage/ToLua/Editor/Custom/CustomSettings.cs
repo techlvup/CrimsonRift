@@ -136,6 +136,7 @@ public static class CustomSettings
         _GT(typeof(CircleImage)),
         _GT(typeof(LoopScrollList)),
         _GT(typeof(PolygonImage)),
+        _GT(typeof(UIMask)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

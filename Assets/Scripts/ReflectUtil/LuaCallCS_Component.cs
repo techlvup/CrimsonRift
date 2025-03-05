@@ -374,7 +374,7 @@ public static partial class LuaCallCS
         rawImage.SetNativeSize();
     }
 
-    public static void SetGray(UnityEngine.Object obj, string childPath = "", bool isGray = true)
+    public static void SetGray(UnityEngine.Object obj, string childPath = "", bool isGray = true, bool isMask = false)
     {
         Transform trans = GetTransform(obj);
 
@@ -398,9 +398,22 @@ public static partial class LuaCallCS
 
         if(isGray)
         {
-            string[] assetNames = new string[] { "GrayscaleMaterial.mat" };
+            string[] assetNames;
+            string path;
 
-            AssetBundleManager.LoadAssetBundle(DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/materials/grayscale/grayscalematerial.mat_ab", assetNames, (name, asset) => {
+            if(isMask)
+            {
+                assetNames = new string[] { "UIMaskGrayscaleMaterial.mat" };
+                path = DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/materials/uimaskgrayscale/uimaskgrayscalematerial.mat_ab";
+            }
+            else
+            {
+                assetNames = new string[] { "GrayscaleMaterial.mat" };
+                path = DataUtilityManager.m_localRootPath + "AssetBundles/" + DataUtilityManager.m_platform + "/materials/grayscale/grayscalematerial.mat_ab";
+            }
+
+            AssetBundleManager.LoadAssetBundle(path, assetNames, (name, asset) =>
+            {
                 if (name == assetNames[0])
                 {
                     Material material = asset as Material;

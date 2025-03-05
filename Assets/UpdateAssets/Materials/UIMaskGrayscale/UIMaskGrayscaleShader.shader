@@ -1,4 +1,4 @@
-Shader "MyShader/Grayscale"
+Shader "MyShader/UIMaskGrayscale"
 {
     Properties
     {
@@ -16,6 +16,12 @@ Shader "MyShader/Grayscale"
         {
             // 渲染指令
             Blend SrcAlpha OneMinusSrcAlpha
+
+            Stencil {
+                Ref 1
+                Comp Equal
+                Pass Keep
+            }
 
             HLSLPROGRAM
             #pragma vertex analyzeInputData// 指定顶点着色器函数

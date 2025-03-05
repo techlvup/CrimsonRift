@@ -1552,6 +1552,15 @@ public class LuaCallCSWrap
 				LuaCallCS.SetGray(arg0, arg1, arg2);
 				return 0;
 			}
+			else if (count == 4)
+			{
+				UnityEngine.Object arg0 = (UnityEngine.Object)ToLua.CheckObject<UnityEngine.Object>(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
+				bool arg3 = LuaDLL.luaL_checkboolean(L, 4);
+				LuaCallCS.SetGray(arg0, arg1, arg2, arg3);
+				return 0;
+			}
 			else
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaCallCS.SetGray");

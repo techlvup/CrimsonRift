@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3452055340
+CRC: 4262177018
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -36,3 +36,12 @@ AssetBundleManifest:
         Dependency_1: atlas/bg_hghg_wdtx1.atlas_ab
         Dependency_2: animtion/play.anim_ab
         Dependency_3: atlas/atlas01.atlas_ab
+    Info_10:
+      Name: materials/uimaskchildren/uimaskchildrenmaterial.mat_ab
+      Dependencies: {}
+    Info_11:
+      Name: materials/uimaskgrayscale/uimaskgrayscalematerial.mat_ab
+      Dependencies: {}
+    Info_12:
+      Name: materials/uimaskparent/uimaskparentmaterial.mat_ab
+      Dependencies: {}
